@@ -18,7 +18,7 @@ export default function ChatGPT() {
 
     const { register, handleSubmit } = useForm();
 
-    // console.log(process.env.NEXT_PUBLIC_ANALYTICS_ID, 'this is the key')
+    console.log(process.env.NEXT_PUBLIC_ANALYTICS_ID, 'this is the key')
 
 
     const onSubmit = async (data) => {
