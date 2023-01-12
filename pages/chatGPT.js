@@ -5,7 +5,6 @@ import "bootstrap/dist/css/bootstrap.css"
 import { Configuration, OpenAIApi } from 'openai';
 
 import React, { useState } from 'react';
-import { openai_key } from '../config';
 
 export default function ChatGPT() {
     // console.log(process.env.OPENAI_KEY);
