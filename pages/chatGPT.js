@@ -1,40 +1,36 @@
 import { useForm } from 'react-hook-form';
 
 import "bootstrap/dist/css/bootstrap.css"
-// import openai from 'openai';
 import { Configuration, OpenAIApi } from 'openai';
 
 import React, { useState } from 'react';
 
 export default function ChatGPT() {
-    // console.log(process.env.OPENAI_KEY);
-
 
     const [responses, setResponses] = useState([]);
 
+    const kingdomkey = process.env.NEXT_PUBLIC_ANALYTICS_ID;
+
     const configuration = new Configuration({
-        apiKey: process.env.OPENAI_KEY,
+        apiKey: kingdomkey,
     });
 
 
     const { register, handleSubmit } = useForm();
 
+    // console.log(process.env.NEXT_PUBLIC_ANALYTICS_ID, 'this is the key')
+
 
     const onSubmit = async (data) => {
         try {
             const openai = new OpenAIApi(configuration);
-            // console.log(openai)
             const completion = await openai.createCompletion({
                 model: "text-davinci-002",
                 prompt: data.question,
                 max_tokens: 2000,
                 temperature: 0.9,
             });
-            console.log(completion.data.usage);
-            // setResponse([...response, completion.data.choices[0].text]);
             setResponses([completion.data.choices[0].text]);
-            // setResponses(['wed']);
-
 
         } catch (error) {
             console.error(error);
