@@ -8,11 +8,13 @@ import React, { useState } from 'react';
 import { openai_key } from '../config';
 
 export default function ChatGPT() {
+    // console.log(process.env.OPENAI_KEY);
+
 
     const [responses, setResponses] = useState([]);
 
     const configuration = new Configuration({
-        apiKey: openai_key,
+        apiKey: process.env.OPENAI_KEY,
     });
 
 
@@ -33,6 +35,7 @@ export default function ChatGPT() {
             // setResponse([...response, completion.data.choices[0].text]);
             setResponses([completion.data.choices[0].text]);
             // setResponses(['wed']);
+
 
         } catch (error) {
             console.error(error);
